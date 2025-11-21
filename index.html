@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XOMA - Legal & Privacy</title>
+    <title>XOMA - Student Marketplace</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,139 +14,235 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1e293b;
+            background: #ffffff;
             min-height: 100vh;
         }
         
         .container {
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
         
         .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 120px 0;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
         }
         
         .logo {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, #0A3D62, #4B9CD3);
-            border-radius: 25px;
-            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            margin: 0 auto 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 40px;
-            font-weight: bold;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
         }
         
         .header h1 {
-            color: #0A3D62;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            color: white;
+            font-size: 4rem;
+            margin-bottom: 24px;
             font-weight: 700;
+            position: relative;
+            z-index: 1;
         }
         
         .header p {
-            color: #666;
-            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
         }
         
-        .links-container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1e40af;
+            padding: 16px 48px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: #f1f5f9;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .feature-card h3 {
+            color: #1e293b;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+        
+        .links-section {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 80px 60px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .links-section h2 {
+            color: #1e293b;
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .links-section > p {
+            color: #4b5563;
+            font-size: 1.125rem;
+            margin-bottom: 48px;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
         
         .link-card {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            border-left: 4px solid #0A3D62;
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
             text-decoration: none;
             color: inherit;
             display: block;
         }
         
         .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: #3b82f6;
         }
         
         .link-card h3 {
-            color: #0A3D62;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
+            color: #1e293b;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-weight: 600;
         }
-        
-        .link-card h3::before {
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .privacy::before { content: "🔒"; }
-        .deletion::before { content: "🗑️"; }
-        .data::before { content: "🛡️"; }
         
         .link-card p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            color: #4b5563;
+            font-size: 1rem;
         }
         
         .footer {
             text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            margin-top: 80px;
+            padding: 48px;
+            background: #1e293b;
+            border-radius: 16px;
             color: white;
-        }
-        
-        .footer a {
-            color: #a8edea;
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            text-decoration: underline;
         }
         
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 15px;
             }
             
-            .header, .links-container {
-                padding: 20px;
+            .header {
+                padding: 40px 25px;
             }
             
             .header h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
-            .logo {
-                width: 80px;
-                height: 80px;
-                font-size: 32px;
+            .features {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 30px;
+            }
+            
+            .links-section {
+                padding: 30px;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -152,32 +250,75 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">X</div>
-            <h1>XOMA Legal Center</h1>
-            <p>Privacy policies and data management for XOMA users</p>
+            <div class="logo">📚</div>
+            <h1>XOMA</h1>
+            <p>Your trusted marketplace for books, uniforms, and stationery</p>
+            <a href="#download" class="cta-button">Download App</a>
         </div>
         
-        <div class="links-container">
-            <a href="privacy-policy.html" class="link-card privacy">
-                <h3>Privacy Policy</h3>
-                <p>Learn how we collect, use, and protect your personal information when using the XOMA marketplace app.</p>
-            </a>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h3>Books & Textbooks</h3>
+                <p>Find and sell textbooks, novels, and educational materials. Connect with students in your area and get the books you need at great prices.</p>
+            </div>
             
-            <a href="account-deletion.html" class="link-card deletion">
-                <h3>Account Deletion</h3>
-                <p>Step-by-step guide to permanently delete your XOMA account and remove all associated data.</p>
-            </a>
+            <div class="feature-card">
+                <div class="feature-icon">👕</div>
+                <h3>School Uniforms</h3>
+                <p>Buy and sell school uniforms in excellent condition. Perfect for growing students who need different sizes throughout the year.</p>
+            </div>
             
-            <a href="data-deletion.html" class="link-card data">
-                <h3>Data Deletion Policy</h3>
-                <p>Comprehensive information about how we handle data deletion requests and your privacy rights.</p>
-            </a>
+            <div class="feature-card">
+                <div class="feature-icon">✏️</div>
+                <h3>Stationery & Supplies</h3>
+                <p>Get all your school supplies from pens and notebooks to calculators and art materials. Everything students need in one place.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Credits System</h3>
+                <p>Earn credits by selling items and use them to purchase what you need. A convenient way to trade without cash transactions.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Safe & Secure</h3>
+                <p>Your privacy and security are our priority. All transactions are protected and your personal information is kept safe.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Local Community</h3>
+                <p>Connect with students and parents in your local area. Support your community while finding great deals on educational items.</p>
+            </div>
+        </div>
+        
+        <div class="links-section">
+            <h2>Legal & Support</h2>
+            <p>Learn more about how we protect your data and handle your information</p>
+            
+            <div class="links-grid">
+                <a href="privacy-policy.html" class="link-card">
+                    <h3>🔒 Privacy Policy</h3>
+                    <p>How we collect, use, and protect your personal information</p>
+                </a>
+                
+                <a href="account-deletion.html" class="link-card">
+                    <h3>🗑️ Account Deletion</h3>
+                    <p>Learn how to delete your account and what happens to your data</p>
+                </a>
+                
+                <a href="data-deletion.html" class="link-card">
+                    <h3>🛡️ Data Deletion Policy</h3>
+                    <p>Our comprehensive policy on data deletion and your rights</p>
+                </a>
+            </div>
         </div>
         
         <div class="footer">
-            <p><strong>XOMA</strong> - Your trusted marketplace for books, uniforms & stationery</p>
-            <p>Questions? Contact us at <a href="mailto:alvinondieki5@gmail.com">alvinondieki5@gmail.com</a></p>
-            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Last updated: November 2025</p>
+            <p>&copy; 2025 XOMA. All rights reserved.</p>
+            <p>Contact: <a href="mailto:alvinondieki5@gmail.com" style="color: #a8edea;">alvinondieki5@gmail.com</a></p>
         </div>
     </div>
 </body>
