@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XOMA - Legal & Privacy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #0A3D62, #4B9CD3);
+            border-radius: 25px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+        }
+        
+        .header h1 {
+            color: #0A3D62;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .links-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .link-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #0A3D62;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+        }
+        
+        .link-card h3 {
+            color: #0A3D62;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .link-card h3::before {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .privacy::before { content: "🔒"; }
+        .deletion::before { content: "🗑️"; }
+        .data::before { content: "🛡️"; }
+        
+        .link-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: white;
+        }
+        
+        .footer a {
+            color: #a8edea;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header, .links-container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">X</div>
+            <h1>XOMA Legal Center</h1>
+            <p>Privacy policies and data management for XOMA users</p>
+        </div>
+        
+        <div class="links-container">
+            <a href="privacy-policy.html" class="link-card privacy">
+                <h3>Privacy Policy</h3>
+                <p>Learn how we collect, use, and protect your personal information when using the XOMA marketplace app.</p>
+            </a>
+            
+            <a href="account-deletion.html" class="link-card deletion">
+                <h3>Account Deletion</h3>
+                <p>Step-by-step guide to permanently delete your XOMA account and remove all associated data.</p>
+            </a>
+            
+            <a href="data-deletion.html" class="link-card data">
+                <h3>Data Deletion Policy</h3>
+                <p>Comprehensive information about how we handle data deletion requests and your privacy rights.</p>
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p><strong>XOMA</strong> - Your trusted marketplace for books, uniforms & stationery</p>
+            <p>Questions? Contact us at <a href="mailto:alvinondieki5@gmail.com">alvinondieki5@gmail.com</a></p>
+            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Last updated: November 2025</p>
+        </div>
+    </div>
+</body>
+</html>
