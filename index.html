@@ -246,6 +246,25 @@
             }
         }
     </style>
+    <script>
+        function downloadApp() {
+            const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.xoma.bookstores';
+            
+            // Detect if user is on mobile
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile && navigator.userAgent.includes('Android')) {
+                // Try to open in Play Store app first, fallback to web
+                window.location.href = 'market://details?id=com.xoma.bookstores';
+                setTimeout(() => {
+                    window.location.href = playStoreUrl;
+                }, 1000);
+            } else {
+                // Open Play Store web version
+                window.open(playStoreUrl, '_blank');
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -253,7 +272,7 @@
             <div class="logo">📚</div>
             <h1>XOMA</h1>
             <p>Your trusted marketplace for books, uniforms, and stationery</p>
-            <a href="#download" class="cta-button">Download App</a>
+            <a href="#" class="cta-button" onclick="downloadApp()">Download App</a>
         </div>
         
         <div class="features">
