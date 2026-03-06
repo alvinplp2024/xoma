@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="XOMA support center for users, parents, teachers, and educational institutions."
+    />
+    <title>XOMA Support Centre</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --blue-900: #1e3a8a;
+        --blue-700: #1d4ed8;
+        --slate-900: #0f172a;
+        --slate-700: #334155;
+        --slate-500: #64748b;
+        --slate-100: #f1f5f9;
+        --slate-50: #f8fafc;
+        --white: #ffffff;
+        --card: #ffffff;
+        --success: #16a34a;
+        --warning: #d97706;
+        --danger: #dc2626;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.65;
+        color: var(--slate-900);
+        background: var(--white);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px 18px 64px;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
+        color: var(--white);
+        border-radius: 20px;
+        padding: 48px 30px;
+        text-align: center;
+        margin-bottom: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.15) 0, transparent 40%),
+          radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.12) 0, transparent 45%);
+        pointer-events: none;
+      }
+
+      .badge {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 0.88rem;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 999px;
+        padding: 8px 14px;
+        margin-bottom: 16px;
+        position: relative;
+      }
+
+      .hero h1,
+      .hero h2 {
+        position: relative;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        margin-bottom: 8px;
+      }
+
+      .hero p {
+        color: #dbeafe;
+        margin-top: 10px;
+        position: relative;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 1.8fr 1fr;
+        gap: 20px;
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 12px 30px rgba(2, 6, 23, 0.05);
+      }
+
+      .panel h2 {
+        font-size: 1.4rem;
+        color: var(--blue-900);
+        margin-bottom: 14px;
+      }
+
+      .panel + .panel {
+        margin-top: 20px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .card {
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 16px;
+        background: var(--slate-50);
+      }
+
+      .card h3 {
+        color: var(--blue-900);
+        margin-bottom: 10px;
+        font-size: 1.05rem;
+      }
+
+      .meta {
+        color: var(--slate-500);
+        font-size: 0.93rem;
+      }
+
+      .panel ul {
+        margin: 10px 0 0 20px;
+      }
+
+      .panel li + li {
+        margin-top: 8px;
+      }
+
+      .contact-box {
+        margin-top: 10px;
+        padding: 16px;
+        border-left: 4px solid var(--blue-700);
+        background: #eff6ff;
+        border-radius: 10px;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin: 12px 0;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        margin-right: 8px;
+        margin-bottom: 6px;
+      }
+
+      .chip-green {
+        background: #ecfdf5;
+        color: #065f46;
+      }
+
+      .chip-orange {
+        background: #fffbeb;
+        color: #92400e;
+      }
+
+      .chip-red {
+        background: #fef2f2;
+        color: #991b1b;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        background: var(--slate-50);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .table th,
+      .table td {
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 12px;
+        vertical-align: top;
+      }
+
+      .table th {
+        color: var(--blue-900);
+        background: #dbeafe;
+        font-weight: 600;
+      }
+
+      .link {
+        color: #1d4ed8;
+        text-decoration: none;
+      }
+
+      .link:hover {
+        text-decoration: underline;
+      }
+
+      .footer {
+        margin-top: 22px;
+        color: #475569;
+        font-size: 0.95rem;
+      }
+
+      .cta {
+        display: inline-block;
+        margin-top: 14px;
+        background: var(--blue-900);
+        color: white;
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 10px;
+        font-weight: 600;
+      }
+
+      .cta:hover {
+        opacity: 0.95;
+      }
+
+      @media (max-width: 980px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding: 36px 22px;
+        }
+
+        .container {
+          padding: 14px 12px 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <div class="badge">
+          <span>🛟</span>
+          <span>XOMA Support Centre</span>
+        </div>
+        <h1>Customer Support, Compliance, and Escalation</h1>
+        <p>
+          This page contains the official support and transparency information for
+          users, reviewers, and enterprise partners.
+        </p>
+      </section>
+
+      <section class="layout">
+        <div>
+          <section class="panel">
+            <h2>Support at a Glance</h2>
+            <p>
+              XOMA provides support for students, teachers, parents, and
+              educational institutions across all supported regions.
+            </p>
+            <div class="row">
+              <span class="chip chip-green">Average response: &lt; 48h</span>
+              <span class="chip chip-green">Email SLA: 24h during business days</span>
+              <span class="chip chip-orange">Urgent issue: same-day callback</span>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2>Contact Methods</h2>
+            <div class="contact-box">
+              <strong>Primary support contact:</strong>
+              <br />
+              Email:
+              <a class="link" href="mailto:alvinondieki5@gmail.com"
+                >alvinondieki5@gmail.com</a>
+              <br />
+              Mobile: <a class="link" href="tel:+254700921906">+254700921906</a>
+              <br />
+              WhatsApp: <a class="link" href="https://wa.me/254700921906">+254700921906</a>
+              <br />
+              Response window: Mon–Fri, 08:00–20:00 EAT
+            </div>
+
+            <ul>
+              <li>
+                For urgent app availability, payment, or account lock issues, mark email
+                subject with <strong>URGENT</strong>.
+              </li>
+              <li>
+                For account access issues, include the registered email, account type
+                (student, parent, teacher), and the device model.
+              </li>
+              <li>
+                For App Review assistance, include app version, country, and exact steps
+                to reproduce.
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <h2>Common Support Categories</h2>
+            <div class="grid">
+              <article class="card">
+                <h3>Account & authentication</h3>
+                <p class="meta">
+                  Sign-up, login, profile updates, verification issues.
+                </p>
+              </article>
+              <article class="card">
+                <h3>Listings & marketplace</h3>
+                <p class="meta">
+                  Add/edit/delete listings, image uploads, categories, and content rules.
+                </p>
+              </article>
+              <article class="card">
+                <h3>Messaging and notifications</h3>
+                <p class="meta">
+                  Not receiving notifications, failed messages, blocked conversations.
+                </p>
+              </article>
+              <article class="card">
+                <h3>Payments & trust controls</h3>
+                <p class="meta">
+                  Verification flow, transaction visibility, and dispute reporting.
+                </p>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <div>
+          <section class="panel">
+            <h2>App Review Support</h2>
+            <p>
+              Apple App Store review can use the credentials provided in the
+              <strong>App Review Information</strong> section of App Store Connect.
+            </p>
+            <ul>
+              <li>Use the dedicated reviewer account configured in App Store Connect.</li>
+              <li>
+                If login fails, provide additional access details by replying to
+                the reviewer notes email.
+              </li>
+              <li>
+                Mention any required environment setup before deep testing.
+              </li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <h2>Support Escalation Matrix</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Issue Type</th>
+                  <th>First Contact</th>
+                  <th>Escalation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>General user support</td>
+                  <td>Support email</td>
+                  <td>Same-day internal follow-up</td>
+                </tr>
+                <tr>
+                  <td>Account disabled / security concern</td>
+                  <td>Urgent email + phone call</td>
+                  <td>Developer response within 24h</td>
+                </tr>
+                <tr>
+                  <td>Fraud, abuse, or misuse reports</td>
+                  <td>Email with screenshots</td>
+                  <td>24x7 security triage</td>
+                </tr>
+                <tr>
+                  <td>Data requests (deletion/export)</td>
+                  <td>Support email with ID</td>
+                  <td>Legal timeline per policy</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="panel">
+            <h2>Legal and policy pages</h2>
+            <p>Use the policy links below in support communications and App metadata:</p>
+            <ul>
+              <li>Privacy Policy: <a class="link" href="privacy-policy.html">privacy-policy.html</a></li>
+              <li>Account Deletion: <a class="link" href="account-deletion.html">account-deletion.html</a></li>
+              <li>Data Deletion: <a class="link" href="data-deletion.html">data-deletion.html</a></li>
+            </ul>
+            <a class="cta" href="mailto:alvinondieki5@gmail.com?subject=XOMA%20Support%20Request">
+              Contact Support Team
+            </a>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Service and privacy notices</h2>
+        <div class="row">
+          <span class="chip chip-green">No third-party advertising</span>
+          <span class="chip chip-green">Data minimisation in core workflows</span>
+          <span class="chip chip-orange">Location use is user-controlled and purposeful</span>
+        </div>
+        <p>
+          XOMA is built for educational commerce and communication within school
+          communities. Your data is collected only to enable authentication,
+          marketplace functionality, and support operations.
+        </p>
+      </section>
+
+      <p class="footer">
+        Last updated: March 6, 2026. For App Store Connect support URL, use the
+        published HTTPS link to this file.
+      </p>
+    </main>
+  </body>
+</html>
